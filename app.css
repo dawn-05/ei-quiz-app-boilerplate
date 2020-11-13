@@ -13,13 +13,12 @@ body{
 }
 h1{
   text-align: center;
-  margin: 50px;
+  margin: 35px;
   padding: 35px;
   background-color: grey;
-  
 }
 section{
-  margin: 50px;
+  margin: 35px;
   padding:10%;
   border: 50px grey;
   background-color: grey;
@@ -29,4 +28,13 @@ input{
   display: block;
   text-align: center;
   margin: 0 auto;
+}
+.question-and-score{
+  text-align: center;
+  margin: 35px;
+  padding: 1px;
+  background-color: grey;
+}
+p{
+  text-align: center;
 }
