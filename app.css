@@ -6,3 +6,27 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+body{
+  background-image: url("bkpicture.jpg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+h1{
+  text-align: center;
+  margin: 50px;
+  padding: 35px;
+  background-color: grey;
+  
+}
+section{
+  margin: 50px;
+  padding:10%;
+  border: 50px grey;
+  background-color: grey;
+  align-items: center;
+}
+input{
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
