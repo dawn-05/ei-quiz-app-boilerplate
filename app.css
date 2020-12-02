@@ -11,13 +11,31 @@ body{
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
 }
+ 
+button{
+  margin:0 auto;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+section{
+  background-color:rgba(180, 191, 183, 0.7);
+  align-items: center;
+  border-radius: 25px;
+  margin: 25px;
+  border: 20px;
+  padding: 10%;
+}
+
 h1{
   text-align: center;
   margin: 35px;
   padding: 35px;
-  background-color: grey;
+  /*background-color:rgba(86, 193, 196, 0.4);
+  border-radius: 25px;*/
 }
-section{
+article {
   margin: 35px;
   padding:10%;
   border: 50px grey;
