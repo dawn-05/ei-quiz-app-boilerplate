@@ -139,7 +139,7 @@ return (`
     Art Quiz
   </h1>
   <section>
-  <p> 
+  <p class = "feed"> 
     Let's find out how much you know about ART!
   </p>
   <button type="submit" class="start-button">
@@ -192,24 +192,43 @@ function renderQuestionPage(){
  
 function renderFeedBackPageCorrect(){
   return (`
-  <h2>
+  <section>
+  <h2 class = "feed">
   That's Correct!
   </h2>
   <button type="submit" class="next-button">
  Next
 </button>
+</section>
   `)
 }
 
 function renderFeedBackPageWrong(){
   return (`
-  <h2>
-  whoops, the correct answer is ${store.questions[currentQuestion].correctAnswer}!
+  <section>
+  <h2 class= "feed">
+  whoops, the correct answer is <p class = "feed">
+  "${store.questions[currentQuestion].correctAnswer}!"
+  </p>
   </h2>
   <button type="submit" class="next-button">
  Next
 </button>
+</section>
   `)
+}
+
+function renderLastPage(){
+  return `
+  <section>
+  <h3>
+  Your Score is:${score}/6
+  </h3>
+  <button type="submit" class="restart-button">
+  Restart Quiz
+ </button>
+ </section>
+  `
 }
 
 /**
@@ -249,7 +268,19 @@ function nextHandler(){
     event.preventDefault();
     currentQuestion++;
     $(".quiz-app").html( renderQuestionPage );
+    if(currentQuestion === 5){
+      $(".quiz-app").html(renderLastPage);
+    }
   });
+}
+
+function restartQuiz(){
+  $(".quiz-app").on("click", ".restart-button", function(event){
+    event.preventDefault();
+    currentQuestion = 0;
+    score = 0;
+    $(".quiz-app").html( renderStartPage );
+});
 }
 
 function handleQuiz() {
@@ -258,7 +289,7 @@ function handleQuiz() {
   $(submitHandler);
   $(startQuizHandler);
   $(nextHandler);
-
+  $(restartQuiz);
   
 }
 

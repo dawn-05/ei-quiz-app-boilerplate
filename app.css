@@ -13,8 +13,9 @@ body{
 }
  
 button{
-  margin:0 auto;
+  display: block;
   width: 100px;
+  margin: auto;
   justify-content: center;
   align-items: center;
 }
@@ -35,6 +36,16 @@ h1{
   /*background-color:rgba(86, 193, 196, 0.4);
   border-radius: 25px;*/
 }
+
+
+h4{
+  display: block;
+  width: 100px;
+  margin: auto;
+  padding: 5px;
+  align-items: center;
+}
+
 article {
   margin: 35px;
   padding:10%;
@@ -43,8 +54,6 @@ article {
   align-items: center;
 }
 input{
-  display: block;
-  text-align: center;
   margin: 0 auto;
 }
 .question-and-score{
@@ -53,6 +62,7 @@ input{
   padding: 1px;
   background-color: grey;
 }
-p{
+
+.feed{
   text-align: center;
 }
