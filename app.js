@@ -139,7 +139,7 @@ return (`
     Art Quiz
   </h1>
   <section>
-  <p class = "feed"> 
+  <p class = "firstpage"> 
     Let's find out how much you know about ART!
   </p>
   <button type="submit" class="start-button">
@@ -167,22 +167,25 @@ function renderQuestionPage(){
   <h3>
   ${store.questions[currentQuestion].question}
   </h3>
-  <div>
+  <section class="choices">
+  <label>
     <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[0]}"/>
      ${store.questions[currentQuestion].answers[0]}
-  </div>
-  <div>
+     <span></span>
+  </label>
+  <label>
     <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[1]}"/>
     ${store.questions[currentQuestion].answers[1]}
-  </div>
-  <div>
+  </label>
+  <label>
     <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[2]}"/>
      ${store.questions[currentQuestion].answers[2]}
-  </div>
-  <div>
+  </label>
+  <label>
     <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[3]}"/>
      ${store.questions[currentQuestion].answers[3]}
-  </div>
+  </label>
+  </section>
   <button type="submit" class="submit-button">
   Submit
 </button>
@@ -192,8 +195,11 @@ function renderQuestionPage(){
  
 function renderFeedBackPageCorrect(){
   return (`
+  <h1>
+  Art Quiz
+</h1>
   <section>
-  <h2 class = "feed">
+  <h2 class = "correctfeed">
   That's Correct!
   </h2>
   <button type="submit" class="next-button">
@@ -205,9 +211,12 @@ function renderFeedBackPageCorrect(){
 
 function renderFeedBackPageWrong(){
   return (`
+  <h1>
+  Art Quiz
+</h1>
   <section>
   <h2 class= "feed">
-  whoops, the correct answer is <p class = "feed">
+  Whoops, the correct answer is <p class = "feed">
   "${store.questions[currentQuestion].correctAnswer}!"
   </p>
   </h2>
@@ -220,9 +229,12 @@ function renderFeedBackPageWrong(){
 
 function renderLastPage(){
   return `
+  <h1>
+  Art Quiz
+</h1>
   <section>
   <h3>
-  Your Score is:${score}/6
+  Your Score is: ${score}/6
   </h3>
   <button type="submit" class="restart-button">
   Restart Quiz
