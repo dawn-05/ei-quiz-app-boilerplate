@@ -135,17 +135,19 @@ let score = 0;
 function renderStartPage() {
   /* the first page of the quiz (html)*/ 
 return (`
+
   <h1>
     Art Quiz
   </h1>
-  <section>
-  <p class = "firstpage"> 
-    Let's find out how much you know about ART!
-  </p>
-  <button type="submit" class="start-button">
-    Start Quiz
-  </button>
-  </section>
+    <section class ="main">
+      <p class = "firstpage"> 
+        Let's find out how much you know about ART!
+      </p>
+      <button type="submit" class="start-button">
+        Start Quiz
+      </button>
+    </section>
+  
 `);
 }
 /**
@@ -156,60 +158,62 @@ return (`
  */
 function renderQuestionPage(){
   return(`
-  <h1>
-  Art Quiz
-  </h1>
-  <section>
-  <h4>
-  Question:${currentQuestion+1}/6
-  </h4>
-  <h4>
-  Score:${score}/6
-  </h4>
-  <h3>
-  ${store.questions[currentQuestion].question}
-  </h3>
-  <div class= "wrapper">
-      <label>
-        <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[0]}"/>
-        ${store.questions[currentQuestion].answers[0]}
-        <span></span>
-      </label>
-      <label>
-        <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[1]}"/>
-        ${store.questions[currentQuestion].answers[1]}
-      </label>
-      <label>
-        <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[2]}"/>
-        ${store.questions[currentQuestion].answers[2]}
-      </label>
-      <label>
-        <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[3]}"/>
-        ${store.questions[currentQuestion].answers[3]}
-      </label>
+  <div class ="wrapper">
+    <h1>
+      Art Quiz
+    </h1>
+      <section class= "quiz">
+        <h2>
+          Question:${currentQuestion+1}/6
+        </h2>
+        <h2>
+          Score:${score}/6
+        </h2>
+        <form>
+          <fieldset>
+          
+          <legend>${store.questions[currentQuestion].question}</legend>
+            
+                
+          <label><input type="radio" name="choice" value="${store.questions[currentQuestion].answers[0]}"/>
+                  ${store.questions[currentQuestion].answers[0]}</label><br/>
+                
+            <label><input type="radio" name="choice" value="${store.questions[currentQuestion].answers[1]}"/>
+                  ${store.questions[currentQuestion].answers[1]}</label><br/>
+                
+            <label><input type="radio" name="choice" value="${store.questions[currentQuestion].answers[2]}"/>
+                  ${store.questions[currentQuestion].answers[2]}</label><br/>
+                
+            <label><input type="radio" name="choice" value="${store.questions[currentQuestion].answers[3]}"/>
+                  ${store.questions[currentQuestion].answers[3]}</label><br>
+                
+              </fieldset>
+            <button type="submit" class="submit-button">
+              Submit
+            </button>
+          <form class="quiz-app">
+        </section>
   </div>
-  <button type="submit" class="submit-button">
-  Submit
-</button>
-</section>
- ` );
+    ` );
 }
  /**
   * feedback page for users that chose the correct answer (html)
   */
 function renderFeedBackPageCorrect(){
   return (`
-  <h1>
-  Art Quiz
-</h1>
-  <section>
-  <h2 class = "correctfeed">
-  That's Correct!
-  </h2>
-  <button type="submit" class="next-button">
- Next
-</button>
-</section>
+
+    <h1>
+    Art Quiz
+    </h1>
+      <section class= "main">
+      <h2 class = "correctfeed">
+      That's Correct!
+      </h2>
+      <button type="submit" class="next-button">
+      Next
+      </button>
+    </section>
+ 
   `)
 }
 /**
@@ -217,19 +221,21 @@ function renderFeedBackPageCorrect(){
   */
 function renderFeedBackPageWrong(){
   return (`
-  <h1>
-  Art Quiz
-</h1>
-  <section>
-  <h2 class= "feed">
-  Whoops, that was incorrect! The correct answer is <p class = "feed">
-  "${store.questions[currentQuestion].correctAnswer}!"
-  </p>
-  </h2>
-  <button type="submit" class="next-button">
- Next
-</button>
-</section>
+
+    <h1>
+      Art Quiz
+    </h1>
+      <section class ="main">
+        <h2 class= "feed">
+        Whoops, that was incorrect! The correct answer is <p class = "feed">
+        "${store.questions[currentQuestion].correctAnswer}!"
+        </p>
+        </h2>
+        <button type="submit" class="next-button">
+          Next
+        </button>
+    </section>
+  
   `)
 }
 /**
@@ -237,17 +243,19 @@ function renderFeedBackPageWrong(){
  */
 function renderLastPage(){
   return `
-  <h1>
-  Art Quiz
-</h1>
-  <section>
-  <h3>
-  Your Score is: ${score}/6
-  </h3>
-  <button type="submit" class="restart-button">
-  Restart Quiz
- </button>
- </section>
+  
+    <h1>
+      Art Quiz
+    </h1>
+      <section class="main">
+        <h2>
+        Your Score is: ${score}/6
+        </h2>
+        <button type="submit" class="restart-button">
+          Restart Quiz
+        </button>
+      </section>
+  
   `
 }
 
