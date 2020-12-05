@@ -293,10 +293,10 @@ function nextHandler(){
   $(".quiz-app").on("click", ".next-button", function(event){
     event.preventDefault();
     currentQuestion++;
-    $(".quiz-app").html( renderQuestionPage );
-    if(currentQuestion === 5){
+    if(currentQuestion === 6){
       $(".quiz-app").html(renderLastPage);
     }
+    $(".quiz-app").html( renderQuestionPage );
   });
 }
 
