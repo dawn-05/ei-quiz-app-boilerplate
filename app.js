@@ -149,8 +149,9 @@ return (`
 `);
 }
 /**
- * <h3>question that's on</h3>
- * <div>answer choices</div>
+ * <h4> shows the number of question user is on and their score
+ * <h3>question that's currently displayed</h3>
+ * <label>answer choices</div>
  */
 function renderQuestionPage(){
   return(`
@@ -167,32 +168,34 @@ function renderQuestionPage(){
   <h3>
   ${store.questions[currentQuestion].question}
   </h3>
-  <section class="choices">
-  <label>
-    <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[0]}"/>
-     ${store.questions[currentQuestion].answers[0]}
-     <span></span>
-  </label>
-  <label>
-    <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[1]}"/>
-    ${store.questions[currentQuestion].answers[1]}
-  </label>
-  <label>
-    <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[2]}"/>
-     ${store.questions[currentQuestion].answers[2]}
-  </label>
-  <label>
-    <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[3]}"/>
-     ${store.questions[currentQuestion].answers[3]}
-  </label>
-  </section>
+  <div class= "wrapper">
+      <label>
+        <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[0]}"/>
+        ${store.questions[currentQuestion].answers[0]}
+        <span></span>
+      </label>
+      <label>
+        <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[1]}"/>
+        ${store.questions[currentQuestion].answers[1]}
+      </label>
+      <label>
+        <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[2]}"/>
+        ${store.questions[currentQuestion].answers[2]}
+      </label>
+      <label>
+        <input type="radio" name="choice" value="${store.questions[currentQuestion].answers[3]}"/>
+        ${store.questions[currentQuestion].answers[3]}
+      </label>
+  </div>
   <button type="submit" class="submit-button">
   Submit
 </button>
 </section>
  ` );
 }
- 
+ /**
+  * feedback page for users that chose the correct answer
+  */
 function renderFeedBackPageCorrect(){
   return (`
   <h1>
@@ -208,7 +211,9 @@ function renderFeedBackPageCorrect(){
 </section>
   `)
 }
-
+/**
+  * feedback page for users that chose the wrong answer
+  */
 function renderFeedBackPageWrong(){
   return (`
   <h1>
@@ -216,7 +221,7 @@ function renderFeedBackPageWrong(){
 </h1>
   <section>
   <h2 class= "feed">
-  Whoops, the correct answer is <p class = "feed">
+  Whoops, that was incorrect! The correct answer is <p class = "feed">
   "${store.questions[currentQuestion].correctAnswer}!"
   </p>
   </h2>
@@ -226,7 +231,9 @@ function renderFeedBackPageWrong(){
 </section>
   `)
 }
-
+/**
+ * end of the questions and display the final score and a restart-button
+ */
 function renderLastPage(){
   return `
   <h1>
@@ -254,6 +261,9 @@ $(".quiz-app").on("click", ".start-button", function(event){
 });
 }
 
+/**
+ * submit button to move on to the corresponding feedback page
+ */
 function submitHandler(){
 $(".quiz-app").on("click", ".submit-button", function(event){
   event.preventDefault();
@@ -275,6 +285,9 @@ $(".quiz-app").on("click", ".submit-button", function(event){
 });
 }
 
+/**
+ * when on the feedback page, have a next-button to move onto the next question
+ */
 function nextHandler(){
   $(".quiz-app").on("click", ".next-button", function(event){
     event.preventDefault();
@@ -286,6 +299,9 @@ function nextHandler(){
   });
 }
 
+/**
+ * restart button to restart the quiz
+ */
 function restartQuiz(){
   $(".quiz-app").on("click", ".restart-button", function(event){
     event.preventDefault();
@@ -295,6 +311,9 @@ function restartQuiz(){
 });
 }
 
+/**
+ * calling functions to work
+ */
 function handleQuiz() {
   $(".quiz-app").html( renderStartPage );
 
