@@ -133,7 +133,7 @@ let currentQuestion = 0;
 let score = 0;
 
 function renderStartPage() {
-  /* the first page of the quiz */
+  /* the first page of the quiz (html)*/ 
 return (`
   <h1>
     Art Quiz
@@ -152,6 +152,7 @@ return (`
  * <h4> shows the number of question user is on and their score
  * <h3>question that's currently displayed</h3>
  * <label>answer choices</div>
+ * (html)
  */
 function renderQuestionPage(){
   return(`
@@ -194,7 +195,7 @@ function renderQuestionPage(){
  ` );
 }
  /**
-  * feedback page for users that chose the correct answer
+  * feedback page for users that chose the correct answer (html)
   */
 function renderFeedBackPageCorrect(){
   return (`
@@ -212,7 +213,7 @@ function renderFeedBackPageCorrect(){
   `)
 }
 /**
-  * feedback page for users that chose the wrong answer
+  * feedback page for users that chose the wrong answer (html)
   */
 function renderFeedBackPageWrong(){
   return (`
@@ -232,7 +233,7 @@ function renderFeedBackPageWrong(){
   `)
 }
 /**
- * end of the questions and display the final score and a restart-button
+ * end of the questions and display the final score (html)and a restart-button
  */
 function renderLastPage(){
   return `
