@@ -64,7 +64,7 @@ const store = {
   // 5 or more questions are required
   questions: [
     {
-      question: 'Who painted the <i>Mona Lisa</i>?',
+      question: 'Who painted the Mona Lisa?',
       answers: [
         'Leonardo Da Vinci',
         'Raphael',
@@ -76,12 +76,12 @@ const store = {
     {
       question: 'Which art painting of Van Gogh became the most famous piece?',
       answers: [
-        '<i>Cafe Terrace At Night</i>',
-        '<i>Sunflowers</i>',
-        '<i>The Starry Night</i>',
-        '<i>Almond Blossom</i>'
+        'Cafe Terrace At Night ',
+        'Sunflowers',
+        'The Starry Night',
+        'Almond Blossom'
       ],
-      correctAnswer: '<i>The Starry Night</i>'
+      correctAnswer: 'The Starry Night'
     },
     {
       question: 'The artist Kandinsky is considered the first for which type of art?',
@@ -132,10 +132,9 @@ const store = {
 let currentQuestion = 0;
 let score = 0;
 
-function renderStartPage() {
+function templateStartPage() {
   /* the first page of the quiz (html)*/ 
 return (`
-
   <h1>
     Art Quiz
   </h1>
@@ -147,7 +146,6 @@ return (`
         Start Quiz
       </button>
     </section>
-  
 `);
 }
 /**
@@ -156,7 +154,7 @@ return (`
  * <label>answer choices</div>
  * (html)
  */
-function renderQuestionPage(){
+function templateQuestionPage(){
   return(`
   <div class ="wrapper">
     <h1>
@@ -199,9 +197,8 @@ function renderQuestionPage(){
  /**
   * feedback page for users that chose the correct answer (html)
   */
-function renderFeedBackPageCorrect(){
+function templateFeedBackPageCorrect(){
   return (`
-
     <h1>
     Art Quiz
     </h1>
@@ -213,15 +210,13 @@ function renderFeedBackPageCorrect(){
       Next
       </button>
     </section>
- 
   `)
 }
 /**
   * feedback page for users that chose the wrong answer (html)
   */
-function renderFeedBackPageWrong(){
+function templateFeedBackPageWrong(){
   return (`
-
     <h1>
       Art Quiz
     </h1>
@@ -235,102 +230,82 @@ function renderFeedBackPageWrong(){
           Next
         </button>
     </section>
-  
   `)
 }
 /**
  * end of the questions and display the final score (html)and a restart-button
  */
-function renderLastPage(){
+function templateLastPage(){
   return `
-  
     <h1>
       Art Quiz
     </h1>
       <section class="main">
-        <h2>
+        <h2 class="lastpage">
         Your Score is: ${score}/6
         </h2>
         <button type="submit" class="restart-button">
           Restart Quiz
         </button>
       </section>
-  
   `
 }
-
-/**
+function render(){
+  $(".quiz-app").html( templateStartPage );
+  /**
  * startQuiz sending it to the first question page
  */
-function startQuizHandler(){
-$(".quiz-app").on("click", ".start-button", function(event){
-  event.preventDefault();
-  $(".quiz-app").html( renderQuestionPage );
-  store.quizStarted = true;
-});
-}
-
-/**
- * submit button to move on to the corresponding feedback page
- */
-function submitHandler(){
-$(".quiz-app").on("click", ".submit-button", function(event){
-  event.preventDefault();
-  let selectedAnswer = $('input:checked').val();
-  let answer = store.questions[currentQuestion].correctAnswer;
-
-  if(selectedAnswer === answer){
-    score++;
-    $(".quiz-app").html( renderFeedBackPageCorrect);
-  }
-  else{
-    if(selectedAnswer === undefined){
-      alert("Please select an answer!");
-    }else{
-      $(".quiz-app").html( renderFeedBackPageWrong);
-    }
-  }
-  
-});
-}
-
-/**
+  $(".quiz-app").on("click", ".start-button", function(event){
+    event.preventDefault();
+    $(".quiz-app").html( templateQuestionPage );
+    store.quizStarted = true;
+  });
+  /**
+  * submit button to move on to the corresponding feedback page
+  */
+  $(".quiz-app").on("click", ".submit-button", function(event){
+    event.preventDefault();
+    let selectedAnswer = $('input:checked').val();
+    let answer = store.questions[currentQuestion].correctAnswer;
+  /**
  * when on the feedback page, have a next-button to move onto the next question
  */
-function nextHandler(){
+    if(selectedAnswer === answer){
+      score++;
+      $(".quiz-app").html( templateFeedBackPageCorrect);
+    }
+    else{
+      if(selectedAnswer === undefined){
+        alert("Please select an answer!");
+      }else{
+        $(".quiz-app").html( templateFeedBackPageWrong);
+      }
+    }
+  });
   $(".quiz-app").on("click", ".next-button", function(event){
     event.preventDefault();
     currentQuestion++;
     if(currentQuestion === 6){
-      $(".quiz-app").html(renderLastPage);
+      $(".quiz-app").html(templateLastPage);
     }
-    $(".quiz-app").html( renderQuestionPage );
+    $(".quiz-app").html( templateQuestionPage );
   });
-}
-
-/**
+  /**
  * restart button to restart the quiz
  */
-function restartQuiz(){
   $(".quiz-app").on("click", ".restart-button", function(event){
     event.preventDefault();
     currentQuestion = 0;
     score = 0;
-    $(".quiz-app").html( renderStartPage );
+    $(".quiz-app").html( templateStartPage );
 });
-}
 
+}
 /**
  * calling functions to work
  */
 function handleQuiz() {
-  $(".quiz-app").html( renderStartPage );
-
-  $(submitHandler);
-  $(startQuizHandler);
-  $(nextHandler);
-  $(restartQuiz);
-  
+  $(render);
 }
 
 $(handleQuiz);
